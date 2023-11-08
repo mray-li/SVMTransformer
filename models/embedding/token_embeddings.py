@@ -1,3 +1,8 @@
+"""
+@author : Hyunwoong
+@when : 2019-10-24
+@homepage : https://github.com/gusdnd852
+"""
 from torch import nn
 
 
