@@ -3,8 +3,8 @@
 @when : 2019-10-29
 @homepage : https://github.com/gusdnd852
 """
-from torchtext.legacy.data import Field, BucketIterator
-from torchtext.legacy.datasets.translation import Multi30k
+from torchtext.data import Field, BucketIterator
+from torchtext.datasets import Multi30k
 
 
 class DataLoader:
@@ -32,7 +32,8 @@ class DataLoader:
             self.target = Field(tokenize=self.tokenize_de, init_token=self.init_token, eos_token=self.eos_token,
                                 lower=True, batch_first=True)
 
-        train_data, valid_data, test_data = Multi30k.splits(exts=self.ext, fields=(self.source, self.target))
+
+        train_data, valid_data, test_data = Multi30k.splits(exts=self.ext, fields=(self.source, self.target), root='data')
         return train_data, valid_data, test_data
 
     def build_vocab(self, train_data, min_freq):
